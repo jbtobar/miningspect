@@ -8,11 +8,11 @@
 import React from 'react'
 import { View, Text } from 'react-native'
 
-export default class Template extends React.PureComponent {
+export default class SignInScreen extends React.PureComponent {
   render() {
     return (
       <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
-        <Text>Template</Text>
+        <Text>SignInScreen</Text>
       </View>
     )
   }
