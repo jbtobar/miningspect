@@ -61,3 +61,8 @@ El inspector de la mina detecta actividades que deben ser reportadas. Aquí empi
 Aplicacion Movil
 
 1. [ ] 1. Inspector debe poder acceder a la aplicación de Inspección a través de un dispositivo móvil (iOS/iPad o Android Tablet)
+
+
+---
+
+# Arquitectura
