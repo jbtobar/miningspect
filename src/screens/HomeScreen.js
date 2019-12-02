@@ -7,12 +7,17 @@
  */
 import React from 'react'
 import { View, Text } from 'react-native'
+import Button from '../components/Button'
 
 export default class HomeScreen extends React.PureComponent {
+  _onPress = () => {
+    alert('reporte')
+  }
   render() {
     return (
       <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
         <Text>HomeScreen</Text>
+        <Button title="Crear Reporte" onPress={this._onPress}/>
       </View>
     )
   }

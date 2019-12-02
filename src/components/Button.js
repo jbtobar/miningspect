@@ -7,14 +7,22 @@
  */
 import React from 'react'
 import { TouchableOpacity, Text } from 'react-native'
+import { getPlatformElevation } from '../utils/elevation'
 
 export default class Button extends React.PureComponent {
   render() {
     return (
       <TouchableOpacity
         onPress={this.props.onPress}
-        style={{flex:1,justifyContent:'center',alignItems:'center'}}>
-        <Text>{this.props.title}</Text>
+        style={{
+          justifyContent:'center',
+          alignItems:'center',
+          backgroundColor:'blue',
+          padding:20,
+          borderRadius:2,
+          ...getPlatformElevation(10)
+          }}>
+        <Text style={{color:'white'}}>{this.props.title}</Text>
       </TouchableOpacity>
     )
   }
