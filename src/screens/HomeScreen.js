@@ -11,7 +11,7 @@ import Button from '../components/Button'
 
 export default class HomeScreen extends React.PureComponent {
   _onPress = () => {
-    alert('reporte')
+    this.props.navigation.navigate('CreateReport')
   }
   render() {
     return (

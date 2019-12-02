@@ -9,12 +9,15 @@ import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
 import HomeScreen from './screens/HomeScreen'
-import OtherScreen from './screens/OtherScreen'
+import CreateReportScreen from './screens/CreateReportScreen'
 import SignInScreen from './screens/SignInScreen'
 import AuthLoadingScreen from './screens/AuthLoadingScreen'
 
 
-const AppStack = createStackNavigator({ Home: HomeScreen, Other: OtherScreen });
+const AppStack = createStackNavigator({
+  Home: HomeScreen,
+  CreateReport: CreateReportScreen
+});
 const AuthStack = createStackNavigator({ SignIn: SignInScreen });
 
 export default createAppContainer(
