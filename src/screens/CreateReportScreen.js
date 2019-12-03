@@ -67,6 +67,7 @@ export default class CreateReportScreen extends React.PureComponent {
   render() {
     return (
       <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
+        <Button title="Siguiente FALSO" onPress={() => this.props.navigation.navigate('CreateReportQuestion')}/>
         <Image source={this.state.photo?{uri:this.state.photo.uri}:null} style={{width,height:height/2}} />
         {
           this.state.photo ?
