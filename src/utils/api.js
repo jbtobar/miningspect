@@ -9,7 +9,7 @@ import { Platform } from 'react-native'
 import { API_URL } from 'src/utils/constants'
 
 export function uploadReport(uploadData,cb) {
-  const { photo } = uploadData
+  const { photo,text } = uploadData
   let formData = new FormData()
   // formData.append('photo', picture)
   formData.append('photo', {
@@ -23,9 +23,7 @@ export function uploadReport(uploadData,cb) {
   //     name: `photo.${fileType}`,
   //     type: `image/${fileType}`,
   //   });
-  formData.append('title','title')
-  formData.append('subtitle','subtitle')
-  formData.append('userId','_id')
+  formData.append('text','title')
 
   fetch(API_URL+'/reports/upload', { // Your POST endpoint
       method: 'POST',
