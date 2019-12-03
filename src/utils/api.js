@@ -5,21 +5,36 @@
  * @flow
  * @author Juan Bernardo Tobar <jbtobar.io@gmail.com>
  */
+import { Platform } from 'react-native'
+import { API_URL } from 'src/utils/constants'
 
-
-export function uploadReport() {
+export function uploadReport(uploadData,cb) {
+  const { photo } = uploadData
   let formData = new FormData()
-  formData.append('photo', picture)
-  formData.append('title',title)
-  formData.append('subtitle',subtitle)
-  formData.append('userId',_id)
+  // formData.append('photo', picture)
+  formData.append('photo', {
+    name: photo.fileName,
+    type: photo.type,
+    uri:
+      Platform.OS === "android" ? photo.uri : photo.uri.replace("file://", "")
+  });
+  // formData.append('photo', {
+  //     uri,
+  //     name: `photo.${fileType}`,
+  //     type: `image/${fileType}`,
+  //   });
+  formData.append('title','title')
+  formData.append('subtitle','subtitle')
+  formData.append('userId','_id')
 
-  fetch(API_URL+'/upload_post', { // Your POST endpoint
+  fetch(API_URL+'/reports/upload', { // Your POST endpoint
       method: 'POST',
+      Accept: 'application/json',
+      'Content-Type': 'multipart/form-data',
       body: formData
   }).then(
       res => {
-        console.log(res)
+        console.warn(res)
         cb({status:res.status == 200?'OK':'err'})
       }
   ).catch(

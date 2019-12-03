@@ -12,11 +12,13 @@ import HomeScreen from './screens/HomeScreen'
 import CreateReportScreen from './screens/CreateReportScreen'
 import SignInScreen from './screens/SignInScreen'
 import AuthLoadingScreen from './screens/AuthLoadingScreen'
+import CreateReportQuestionScreen from './screens/CreateReportQuestionScreen'
 
 
 const AppStack = createStackNavigator({
   Home: HomeScreen,
-  CreateReport: CreateReportScreen
+  CreateReport: CreateReportScreen,
+  CreateReportQuestion:CreateReportQuestionScreen
 });
 const AuthStack = createStackNavigator({ SignIn: SignInScreen });
 

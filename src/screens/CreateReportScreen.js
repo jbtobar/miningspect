@@ -10,6 +10,7 @@ import { View, Text, Image,TextInput } from 'react-native'
 import Button from '../components/Button'
 import ImagePicker from 'react-native-image-picker';
 import { width, height } from 'src/generalStyles'
+import { uploadReport } from 'src/utils/api'
 
 const options = {
   title: 'Seleccionar Imagen',
@@ -39,26 +40,36 @@ export default class CreateReportScreen extends React.PureComponent {
       } else if (response.customButton) {
         // console.warn('User tapped custom button: ', response.customButton);
       } else {
-        const source = { uri: response.uri };
+        // const source = { uri: response.uri };
 
         // You can also display the image using data:
         // const source = { uri: 'data:image/jpeg;base64,' + response.data };
 
         this.setState({
-          avatarSource: source,
+          photo:response,
+          // avatarSource: source,
         });
       }
     })
   }
   _onPressNext = () => {
-    alert('next')
+
+    // const uri = this.state.image;
+    // const uriParts = uri.split('.');
+    // const fileType = uriParts[uriParts.length - 1];
+
+    uploadReport({photo:this.state.photo,text:this.state.text},res => {
+      if (res.status == 'OK') {
+        this.props.navigation.navigate('CreateReportQuestion')
+      }
+    })
   }
   render() {
     return (
       <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
-        <Image source={this.state.avatarSource} style={{width,height:height/2}} />
+        <Image source={this.state.photo?{uri:this.state.photo.uri}:null} style={{width,height:height/2}} />
         {
-          this.state.avatarSource ?
+          this.state.photo ?
             <View style={{flex:1,backgroundColor:'yellow',width}}>
             <TextInput
               multiline={true}
