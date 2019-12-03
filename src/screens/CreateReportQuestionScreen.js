@@ -28,7 +28,7 @@ function personsArray() {
   return numa
 }
 const numeroAproxDePersonas = personsArray()
-console.warn(numeroAproxDePersonas)
+// console.warn(numeroAproxDePersonas)
 
 const hayDanoAmbiental = {
   'HAY_DANO_AMBIENTAL':numeroAproxDePersonas,
@@ -79,14 +79,17 @@ function searchTree(treeData,matchingTitle) {
 
 export default class CreateReportQuestionScreen extends React.PureComponent {
   static navigationOptions = ({navigation}) =>({
-    title:navigation.getParam('selectedItem','Categoria de Reporte')
+    title:navigation.getParam('selectedTitle','Categoria de Reporte')
   })
   state = {
     data:[]
   }
   componentDidMount() {
     const item = this.props.navigation.getParam('selectedItem',null)
-    this.setState({data:item ? searchTree(questionTree,item) : Object.keys(questionTree)})
+    this.setState({
+      data:item ? searchTree(questionTree,item) : Object.keys(questionTree),
+      rootQ:item ? false : true
+    })
   }
   render() {
     return (
@@ -99,7 +102,7 @@ export default class CreateReportQuestionScreen extends React.PureComponent {
               title={item.replace(/_/g,' ')}
               subtitle={questionDescriptions[item] || ''}
               style={{marginVertical:10}}
-              onPress={() => this.props.navigation.push('CreateReportQuestion',{selectedItem:item})}/>
+              onPress={() => this.props.navigation.push('CreateReportQuestion',{selectedItem:item,selectedTitle:this.props.navigation.getParam('selectedTitle','')})}/>
           }
         />
       </View>
